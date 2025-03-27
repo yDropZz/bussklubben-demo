@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     void OnDrawGizmos()

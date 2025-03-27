@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] AudioClip backgroundMusic;
     [SerializeField] int score = 0;
     [SerializeField] Transform playerPos;
     public int Score { get { return score;}}
@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = 60;
-        mapGeneration = FindObjectOfType<MapGeneration>();
-        playerPos = FindObjectOfType<Player>().transform;
+        mapGeneration = FindAnyObjectByType<MapGeneration>();
+        playerPos = FindAnyObjectByType<Player>().transform;
         
     }
 
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
+        SoundManager.Instance.PlayMusic(backgroundMusic);
     }
 
     // Update is called once per frame

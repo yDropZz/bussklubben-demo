@@ -22,6 +22,7 @@ public class Road : MonoBehaviour
     [SerializeField] bool trainComing = false;
     [SerializeField] float trainWarningTime = 3f;
     [SerializeField] private Light warningLight;
+    [SerializeField] AudioClip trainSound;
 
 
 
@@ -62,6 +63,14 @@ public class Road : MonoBehaviour
                     StartCoroutine(BlinkLight());
                     yield return new WaitForSeconds(trainWarningTime);
                     trainComing = false;
+
+                    //Time to calculate train volume
+                    float maxDistance = spawnRadius; // max sound distance
+                    float distance = Vector3.Distance(player.position, transform.position);
+                    float volume = Mathf.Clamp01(1 - (distance / maxDistance));
+                    Debug.Log("Volume of train: " + volume);
+
+                    SoundManager.Instance.PlaySoundEffect(trainSound, volume);
                 }
 
                 int vechileIndex = Random.Range(0, vechilePrefabs.Length);

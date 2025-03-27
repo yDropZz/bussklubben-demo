@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -27,13 +27,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Spaghetti code here, will change.
+
         if(Input.GetKeyDown(KeyCode.W) && !isMoving)
         {
             targetPosition += new Vector3(0, 0, 10);
             startTime = Time.time;
             isMoving = true;
             gameManager.CalculateScore();
+        }
 
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !isMoving)
+        {
+            targetPosition += new Vector3(0, 0, 10);
+            startTime = Time.time;
+            isMoving = true;
+            gameManager.CalculateScore();
         }
 
         if(isMoving)
