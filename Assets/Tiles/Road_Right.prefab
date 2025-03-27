@@ -766,16 +766,16 @@ MonoBehaviour:
   - {fileID: 5690919290033613025, guid: 750c72968c28224419b9d2c4449ec210, type: 3}
   - {fileID: 5690919290033613025, guid: dd181df3ef5ed404c8a97373070e8b9d, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 1.5
-  minSpeed: 30
-  maxSpeed: 45
-  spawnRadius: 200
-  isRail: 0
-  trainComing: 0
-  trainWarningTime: 3
+  maxSpawnTime: 2
+  minSpeed: 20
+  maxSpeed: 30
+  spawnRadius: 250
   spawnPoint: {fileID: 8632594872657982017}
   endPoint: {fileID: 5657175637531955482}
   spawnTimer: 0
+  isRail: 0
+  trainComing: 0
+  trainWarningTime: 3
   warningLight: {fileID: 0}
 --- !u!1 &3198610052538472698
 GameObject:

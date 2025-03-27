@@ -1243,13 +1243,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.49225163, y: -0.151872, z: 0.08768334, w: 0.85260475}
-  m_LocalPosition: {x: 7, y: 30, z: -8}
+  m_LocalRotation: {x: 0.4051889, y: -0.07962076, z: 0.03544945, w: 0.91006917}
+  m_LocalPosition: {x: 6, y: 40, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: -20.2, z: 0}
+  m_LocalEulerAnglesHint: {x: 48, y: -10, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,8 +1263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1699240458}
-  offset: {x: 7, y: 30, z: -8}
-  smoothTime: 0.2
+  offset: {x: 6, y: 40, z: -20}
+  smoothTime: 0.5
 --- !u!1001 &967440638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1495,6 +1495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5786866263141373947, guid: 0738c01f50960ca4c98e0ec6e3b4d36e, type: 3}
+      propertyPath: bounceMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4014613065710639314, guid: 0738c01f50960ca4c98e0ec6e3b4d36e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

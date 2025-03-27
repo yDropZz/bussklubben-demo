@@ -10,15 +10,17 @@ public class Road : MonoBehaviour
     [SerializeField] private float minSpeed = 5f;
     [SerializeField] private float maxSpeed = 15f;
     [SerializeField] private float spawnRadius = 50f;
-    [SerializeField] bool isRail = false;
-    [SerializeField] bool trainComing = false;
-    [SerializeField] float trainWarningTime = 3f;
     private Transform player;
 
     public Transform spawnPoint;
     public Transform endPoint;
     public float spawnTimer;
 
+
+    [Header("Railroad stuff")]
+    [SerializeField] bool isRail = false;
+    [SerializeField] bool trainComing = false;
+    [SerializeField] float trainWarningTime = 3f;
     [SerializeField] private Light warningLight;
 
 

@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218d6b141c8977428cfd6e9ca29a47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToDespawn: 200
+  raycastDistance: 10
+  raycastOffset: {x: 0, y: 2, z: 0}
 --- !u!65 &2721845838609155998
 BoxCollider:
   m_ObjectHideFlags: 0

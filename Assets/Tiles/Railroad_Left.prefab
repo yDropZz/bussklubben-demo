@@ -132,17 +132,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vechilePrefabs:
   - {fileID: 5690919290033613025, guid: 750c72968c28224419b9d2c4449ec210, type: 3}
-  minSpawnTime: 3
+  minSpawnTime: 1.5
   maxSpawnTime: 6
   minSpeed: 100
-  maxSpeed: 150
+  maxSpeed: 200
   spawnRadius: 200
-  isRail: 1
-  trainComing: 0
-  trainWarningTime: 3
   spawnPoint: {fileID: 8632594872657982017}
   endPoint: {fileID: 5657175637531955482}
   spawnTimer: 0
+  isRail: 1
+  trainComing: 0
+  trainWarningTime: 1.5
   warningLight: {fileID: 4949060623628874355}
 --- !u!1 &4528168621219985130
 GameObject:
