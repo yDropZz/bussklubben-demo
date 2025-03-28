@@ -12,7 +12,14 @@ public class Enemy : MonoBehaviour
     Player player;
     private Transform targetPoint;
     private float speed;
-    public float Speed { get { return speed;}}
+    public float Speed 
+    { 
+        get { return speed; }
+        set { speed = value; }
+    
+    }
+
+    Collider coll;
 
     //Bool to check if the car is driving freely or with limited speed (determined by car in front)
     private bool limitedSpeed = false;
@@ -69,6 +76,12 @@ public class Enemy : MonoBehaviour
 
             } 
         }
+    }
+
+    public void TurnOffCollider()
+    {
+        coll = GetComponent<Collider>();
+        coll.enabled = false;
     }
 
 }

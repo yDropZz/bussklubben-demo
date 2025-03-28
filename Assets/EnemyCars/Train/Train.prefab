@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3626978080824776874}
   - component: {fileID: 6085051682795918407}
+  - component: {fileID: 2324763325661314583}
   m_Layer: 0
   m_Name: Train
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +53,27 @@ MonoBehaviour:
   distanceToDespawn: 200
   raycastDistance: 0
   raycastOffset: {x: 0, y: 2.5, z: 0}
+--- !u!65 &2324763325661314583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629278891641953548}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 7, z: 80}
+  m_Center: {x: 0, y: 4, z: -30}
 --- !u!1001 &3037498828537793331
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,4 +45,11 @@ public class GameManager : MonoBehaviour
         score = Mathf.FloorToInt(playerPos.position.z / 10);
         Debug.Log("Score: " + score);
     }
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        mapGeneration.ClearTiles();
+        
+    }
 }

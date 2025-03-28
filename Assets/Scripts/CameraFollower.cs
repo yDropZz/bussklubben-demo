@@ -8,6 +8,13 @@ public class CameraFollower : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private float smoothTime = .2f;
 
+        public float SmoothTime
+    { 
+        get { return smoothTime; }
+        set { smoothTime = value; }
+    
+    }
+
     private Vector3 velocity = Vector3.zero;
 
 
