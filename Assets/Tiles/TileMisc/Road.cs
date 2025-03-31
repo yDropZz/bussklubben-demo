@@ -10,6 +10,7 @@ public class Road : MonoBehaviour
     [SerializeField] private float minSpeed = 5f;
     [SerializeField] private float maxSpeed = 15f;
     [SerializeField] private float spawnRadius = 50f;
+    [SerializeField] private float carSpeedScaling = .5f;
     private Transform player;
 
     public Transform spawnPoint;
@@ -23,6 +24,7 @@ public class Road : MonoBehaviour
     [SerializeField] float trainWarningTime = 3f;
     [SerializeField] private Light warningLight;
     [SerializeField] AudioClip trainSound;
+    
 
 
 
@@ -43,6 +45,7 @@ public class Road : MonoBehaviour
 
     void Update()
     {
+
     }
 
     private IEnumerator SpawnVechiles()
@@ -54,7 +57,6 @@ public class Road : MonoBehaviour
             {
                 
                 float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-                spawnTimer = spawnTime;
                 yield return new WaitForSeconds(spawnTime);
 
                 if(isRail)

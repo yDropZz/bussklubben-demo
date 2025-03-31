@@ -16,9 +16,14 @@ public static SoundManager Instance;
 [Header("Audio Clips")]
 public AudioClip[] soundEffects;
 
+[Header("Rules")]
+public bool HonkSoundIsPlaying = false;
+
 
     void Awake()
     {
+        HonkSoundIsPlaying = false;
+
         if(Instance == null)
         {
             Instance = this;

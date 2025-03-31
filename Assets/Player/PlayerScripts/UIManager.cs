@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     GameManager gameManager;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] TextMeshProUGUI comboScoreAmount;
+    [SerializeField] TextMeshProUGUI comboScoreText;
 
     [Header("Game Over Screen")]
     [SerializeField] Image gameOverOverlay;
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         currentScore = gameManager.Score;
         scoreText.text = "Score: " + currentScore;
         timeText.text = "Time: " + Mathf.FloorToInt(Time.timeSinceLevelLoad);
@@ -94,5 +97,49 @@ public class UIManager : MonoBehaviour
 
         gameOverScreen.SetActive(true);
         playAgainButton.gameObject.SetActive(true);
+    }
+
+
+    public void AnimateCombo(int comboCount)
+    {
+        comboCount++;
+
+        int finalScore = currentScore * comboCount;
+
+        comboScoreAmount.text = finalScore.ToString();
+
+        comboScoreAmount.gameObject.SetActive(true);
+
+        StartCoroutine(FlashComboColors());
+
+        comboScoreAmount.transform.localScale = Vector3.zero;
+        LeanTween.scale(comboScoreAmount.gameObject, new Vector3(1.4f, 1.4f, 1.4f), .2f).setEaseOutBack().setOnComplete(() =>
+        {
+            LeanTween.scale(comboScoreAmount.gameObject, Vector3.one, .2f).setEaseInBack().setDelay(.5f).setOnComplete(() =>
+            {
+                comboScoreAmount.gameObject.SetActive(true);
+            });
+        });
+    }
+
+    IEnumerator FlashComboColors()
+    {
+
+        float duration = .2f;
+        float elapsedTime = 0f;
+        float colorChangeInterval = .03f;
+
+        while(elapsedTime < duration)
+        {
+            float brightness = Mathf.Sin(elapsedTime * Mathf.PI * 2f) * .5f + .5f;
+
+            comboScoreAmount.color = Color.Lerp(new Color(.5f, 0f, 0f), Color.red, brightness);
+
+
+            yield return new WaitForSeconds(colorChangeInterval);
+            elapsedTime += colorChangeInterval;
+        }
+
+        comboScoreAmount.color = Color.white;
     }
 }

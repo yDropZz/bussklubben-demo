@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1f;
         Application.targetFrameRate = 60;
         mapGeneration = FindAnyObjectByType<MapGeneration>();
         playerPos = FindAnyObjectByType<Player>().transform;
@@ -31,6 +32,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerPos.position.z > 0)
+        {
+            CalculateScore();
+        }
+
         if(Input.GetKeyDown(KeyCode.R))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -42,8 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void CalculateScore()
     {
-        score = Mathf.FloorToInt(playerPos.position.z / 10);
-        Debug.Log("Score: " + score);
+        score = Mathf.FloorToInt(playerPos.position.z / 9.9f);
     }
 
     public void RestartGame()

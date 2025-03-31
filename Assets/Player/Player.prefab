@@ -100,9 +100,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 68cac64c41d8b714dbb9ecac2d366f95, type: 3}
   - {fileID: 8300000, guid: 1bc05ecc4f1885a458c2535e8776b0cf, type: 3}
   - {fileID: 8300000, guid: dc13f2925c07a964aa029ca438bbd6d9, type: 3}
-  crashSound: {fileID: 8300000, guid: cf0e41f8eab306540adde02797997cff, type: 3}
+  crashSounds:
+  - {fileID: 8300000, guid: 0d6e9bc2c675ac14cbf41c0f6d3ad4a4, type: 3}
+  - {fileID: 8300000, guid: d6a8b1440451861448aecf8d531d2953, type: 3}
+  - {fileID: 8300000, guid: a21c5602e73a85c4e9e25f3863dada9a, type: 3}
+  - {fileID: 8300000, guid: 0b61937936dad054fac9cc17c0be1298, type: 3}
+  - {fileID: 8300000, guid: 99ffe4fe919aaf54da8d3464b167f32c, type: 3}
+  - {fileID: 8300000, guid: 52a47ff7603d242489dea3f9c58772d3, type: 3}
+  - {fileID: 8300000, guid: a1cf2066e4e1c734fbad2c5fb264865c, type: 3}
+  - {fileID: 8300000, guid: c808af41e57326443943cb8ed7a2c785, type: 3}
+  - {fileID: 8300000, guid: eefb2dbfcecf4b44bba1121dcbf3e51f, type: 3}
+  - {fileID: 8300000, guid: 9f29e77447888804b9f7b019b0bb4250, type: 3}
   playerPos: {fileID: 4014613065710639314}
   crashParticles: {fileID: 544958668958682440, guid: 970ac64720aeb9847af76361be4ba75b, type: 3}
+  swipeThreshold: 40
+  dashForce: 125
+  rotationSpeed: 50
 --- !u!54 &3824972430582184422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,7 +140,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!65 &7746367114346009930
@@ -149,8 +162,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.0034194, y: 4.199768, z: 9.773628}
-  m_Center: {x: -0.29999828, y: 1.5998843, z: 0.76245594}
+  m_Size: {x: 2.5, y: 3.75, z: 7}
+  m_Center: {x: 0.15, y: 1.82, z: -0.25}
 --- !u!1001 &5283951480475158609
 PrefabInstance:
   m_ObjectHideFlags: 0

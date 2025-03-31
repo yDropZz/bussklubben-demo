@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629278891641953548}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.32504344, z: 0, w: 0.9456991}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51,8 +51,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToDespawn: 200
-  raycastDistance: 0
+  raycastDistance: 20
   raycastOffset: {x: 0, y: 2.5, z: 0}
+  honkSounds:
+  - {fileID: 8300000, guid: a7321003820d53d42b018c5baeb911b7, type: 3}
+  isTrain: 1
 --- !u!65 &2324763325661314583
 BoxCollider:
   m_ObjectHideFlags: 0

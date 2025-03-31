@@ -46,9 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218d6b141c8977428cfd6e9ca29a47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToDespawn: 200
+  distanceToDespawn: 400
   raycastDistance: 10
   raycastOffset: {x: 0, y: 2, z: 0}
+  honkSounds:
+  - {fileID: 8300000, guid: ed67bab4a6f97b94c955a1394c49b41c, type: 3}
+  - {fileID: 8300000, guid: 6ae792dc59900c245a49123baee285ea, type: 3}
+  - {fileID: 8300000, guid: fb56f0b7dcaff5b47a36b9d2d27eea0e, type: 3}
+  isTrain: 0
 --- !u!65 &2244853841225135115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,7 +136,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: fec73f9a8b0c14f4eae82eb9122e6181, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 53e34dc71da3cbd40a1ca93c8aad23cc, type: 2}
     - target: {fileID: 919132149155446097, guid: fec73f9a8b0c14f4eae82eb9122e6181, type: 3}
