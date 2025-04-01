@@ -2288,7 +2288,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5786866263141373947, guid: 0738c01f50960ca4c98e0ec6e3b4d36e, type: 3}
       propertyPath: dashForce
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -5786866263141373947, guid: 0738c01f50960ca4c98e0ec6e3b4d36e, type: 3}
       propertyPath: jumpSound
@@ -3991,12 +3991,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 535922310}
+  - {fileID: 1863421760}
   - {fileID: 1669562370}
   - {fileID: 1070107646}
   - {fileID: 376983978}
   - {fileID: 2114609238}
-  - {fileID: 535922310}
-  - {fileID: 1863421760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

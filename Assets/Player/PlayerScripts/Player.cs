@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] AudioClip[] jumpSounds;
+    [SerializeField] AudioClip[] dashSounds;
     [SerializeField] AudioClip[] crashSounds;
 
     Vector3 targetPosition;
@@ -193,6 +194,40 @@ public class Player : MonoBehaviour
 
     void Dashing()
     {
+        // Keyboard
+
+        if(canDash)
+        {
+            Vector2 dashDirection = Vector2.zero;
+
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                dashDirection = Vector2.up;
+            }
+            else if(Input.GetKeyDown(KeyCode.A))
+            {
+                dashDirection = Vector2.left;
+            }
+            else if(Input.GetKeyDown(KeyCode.S))
+            {
+                dashDirection = Vector2.down;
+            }
+            else if(Input.GetKeyDown(KeyCode.D))
+            {
+                dashDirection = Vector2.right;
+            }
+
+            if(dashDirection != Vector2.zero)
+            {
+                PerformDash(dashDirection);
+                canDash = false;
+            }
+        }
+
+        //-------------------------------
+
+        // Mobile
+
         if(canDash && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -214,6 +249,9 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        //-------------------------------
+
         return;
     }
 
@@ -228,7 +266,7 @@ public class Player : MonoBehaviour
 
         rb.AddTorque(torqueDirection * rotationSpeed, ForceMode.Impulse);
 
-        SoundManager.Instance.PlaySoundEffect(jumpSounds[Random.Range(0, jumpSounds.Length)]);
+        SoundManager.Instance.PlaySoundEffect(dashSounds[Random.Range(0, dashSounds.Length)]);
 
     }
 
@@ -315,13 +353,14 @@ public class Player : MonoBehaviour
                     enemyRB.AddTorque(enemyTorque, ForceMode.Impulse);
 
                     uiManager.AnimateCombo(crashes);
+                    StartCoroutine(SlowMotion(.15f, .20f));
+                    float slowmoTime = .15f;
+                    slowmoTime = slowmoTime - .01f * crashes;
+                    Mathf.Clamp(slowmoTime, 0, .15f);
+                    
 
                 if(!isDead)
                 {   
-                    // Reset player momentum
-                    Invoke("ResetPlayerMomentum", 5f);
-
-                    StartCoroutine(SlowMotion(.15f, .20f));
                 
                     isDead = true;
                 }
@@ -352,7 +391,7 @@ public class Player : MonoBehaviour
     IEnumerator CheckIfStationary()
     {
         float stationaryTime = 0f;
-        float requiredStationaryTime = 3f;
+        float requiredStationaryTime = 1f;
 
         while(stationaryTime < requiredStationaryTime)
         {
@@ -368,11 +407,17 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+        rb.isKinematic = true;
+
         StartCoroutine(uiManager.GameOver());
     }
 
     IEnumerator SlowMotion(float duration, float slowFactor)
     {
+        if(duration <= 0)
+        {
+            yield break;
+        }
         Time.timeScale = slowFactor;
         yield return new WaitForSeconds(duration);
         Time.timeScale = 1;

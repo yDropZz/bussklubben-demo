@@ -100,6 +100,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 68cac64c41d8b714dbb9ecac2d366f95, type: 3}
   - {fileID: 8300000, guid: 1bc05ecc4f1885a458c2535e8776b0cf, type: 3}
   - {fileID: 8300000, guid: dc13f2925c07a964aa029ca438bbd6d9, type: 3}
+  dashSounds:
+  - {fileID: 8300000, guid: 6f8775489a2a36741b3089fde1feb536, type: 3}
+  - {fileID: 8300000, guid: c7ee24d448ba960498fd14c0fa4bc575, type: 3}
+  - {fileID: 8300000, guid: fce346e32e4132c44a81e3fbe2fd38cd, type: 3}
   crashSounds:
   - {fileID: 8300000, guid: 0d6e9bc2c675ac14cbf41c0f6d3ad4a4, type: 3}
   - {fileID: 8300000, guid: d6a8b1440451861448aecf8d531d2953, type: 3}
@@ -114,7 +118,7 @@ MonoBehaviour:
   playerPos: {fileID: 4014613065710639314}
   crashParticles: {fileID: 544958668958682440, guid: 970ac64720aeb9847af76361be4ba75b, type: 3}
   swipeThreshold: 40
-  dashForce: 125
+  dashForce: 25
   rotationSpeed: 50
 --- !u!54 &3824972430582184422
 Rigidbody:

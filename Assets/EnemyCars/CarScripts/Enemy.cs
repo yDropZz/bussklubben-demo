@@ -9,7 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int distanceToDespawn = 200;
     [SerializeField] private float raycastDistance = 20f;
     [SerializeField] private Vector3 raycastOffset = new Vector3(0, 2.5f, 0);
+
+    [Header("Sounds")]
     [SerializeField] private AudioClip[] honkSounds;
+
+    [Header("Train")]
     [SerializeField] private bool isTrain = false;
     public bool IsTrain { get {return isTrain;}}
     Player player;
@@ -85,6 +89,13 @@ public class Enemy : MonoBehaviour
                     SoundManager.Instance.PlaySoundEffect(honkSounds[Random.Range(0, honkSounds.Length)]);
                     SoundManager.Instance.HonkSoundIsPlaying = true;
                     Invoke("DisableHonkSoundBool", 1f);
+                    if(hit.collider.TryGetComponent<Player>(out Player player))
+                    {
+                        if(player.Dead == true)
+                        {
+                            speed = 0;
+                        }
+                    }
                 }
                 //Debug.Log("Honk!");
 
