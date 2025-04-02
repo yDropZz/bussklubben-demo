@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1274974869991881769
 Transform:
@@ -56,7 +56,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1745928714895610745
 Transform:
@@ -100,7 +100,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6361977505387747585
 Transform:
@@ -219,9 +219,11 @@ MonoBehaviour:
   maxSpeed: 200
   spawnRadius: 400
   carSpeedScaling: 0.005
-  spawnPoint: {fileID: 8632594872657982017}
+  checkRadius: 5
+  spawnPoints: []
   endPoint: {fileID: 5657175637531955482}
   spawnTimer: 0
+  spawnTime: 5
   isRail: 1
   trainComing: 0
   trainWarningTime: 1.5
@@ -242,7 +244,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8585490547474936987
 Transform:
@@ -342,7 +344,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5159172311557351180
 Transform:
@@ -469,7 +471,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3608067842417286274
 Transform:
@@ -507,7 +509,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8632594872657982017
 Transform:
@@ -538,7 +540,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5657175637531955482
 Transform:
@@ -623,6 +625,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -700,6 +710,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -779,6 +797,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -856,6 +882,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -935,6 +969,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1012,6 +1054,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1091,6 +1141,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1168,6 +1226,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1247,6 +1313,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1324,6 +1398,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1403,6 +1485,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1480,6 +1570,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3203b1845a43ff04591c73f8772879eb, type: 3}
       propertyPath: m_Name
       value: railsign
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3203b1845a43ff04591c73f8772879eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3203b1845a43ff04591c73f8772879eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1559,6 +1657,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1636,6 +1742,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1715,6 +1829,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1792,6 +1914,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1871,6 +2001,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1948,6 +2086,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2027,6 +2173,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2104,6 +2258,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2183,6 +2345,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2260,6 +2430,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2339,6 +2517,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2416,6 +2602,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2495,6 +2689,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2573,6 +2775,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rail (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2650,6 +2860,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
       propertyPath: m_Name
       value: Rail (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c1f5e9b7f49ea954b93b060c79a2622d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

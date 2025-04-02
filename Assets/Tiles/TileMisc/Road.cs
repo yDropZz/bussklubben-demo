@@ -11,12 +11,16 @@ public class Road : MonoBehaviour
     [SerializeField] private float maxSpeed = 15f;
     [SerializeField] private float spawnRadius = 50f;
     [SerializeField] private float carSpeedScaling = .5f;
+    [SerializeField] private float checkRadius = 15f;
+
+
     private Transform player;
 
-    public Transform spawnPoint;
+
+    public Transform[] spawnPoints;
     public Transform endPoint;
     public float spawnTimer;
-
+    public float spawnTime = 5f;
 
     [Header("Railroad stuff")]
     [SerializeField] bool isRail = false;
@@ -24,6 +28,8 @@ public class Road : MonoBehaviour
     [SerializeField] float trainWarningTime = 3f;
     [SerializeField] private Light warningLight;
     [SerializeField] AudioClip trainSound;
+
+    private bool firstSpawn = true;
     
 
 
@@ -52,11 +58,17 @@ public class Road : MonoBehaviour
     {
         while(true)
         {
-            float distanceToPlayer = Vector3.Distance(player.position, spawnPoint.position);
-            if(distanceToPlayer < spawnRadius)
+            float distanceToPlayer = Vector3.Distance(player.position, spawnPoints[0].position);
+            if(distanceToPlayer < spawnRadius && transform.position.z > player.transform.position.z - 30f)
             {
                 
                 float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+                if(firstSpawn)
+                {
+                    spawnTime = 0f;
+                    firstSpawn = false;
+                }
+
                 yield return new WaitForSeconds(spawnTime);
 
                 if(isRail)
@@ -64,6 +76,7 @@ public class Road : MonoBehaviour
                     trainComing = true;
                     StartCoroutine(BlinkLight());
                     yield return new WaitForSeconds(trainWarningTime);
+
                     trainComing = false;
 
                     //Time to calculate train volume
@@ -75,12 +88,19 @@ public class Road : MonoBehaviour
                     SoundManager.Instance.PlaySoundEffect(trainSound, volume);
                 }
 
-                int vechileIndex = Random.Range(0, vechilePrefabs.Length);
+                // Roll a dice to see where we spawn the car.
+                int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+                Transform selectedSpawnPoint = spawnPoints[spawnPointIndex];
 
-                GameObject vechile = Instantiate(vechilePrefabs[vechileIndex], spawnPoint.position, Quaternion.identity);
-                vechile.transform.LookAt(endPoint.position);
-                float speed = Random.Range(minSpeed, maxSpeed);
-                vechile.GetComponent<Enemy>().Initialize(endPoint, speed);
+                // Check if the spawn point is clear of other cars
+                if(IsSpawnPointClear(selectedSpawnPoint.position, checkRadius))
+                {
+                    int vechileIndex = Random.Range(0, vechilePrefabs.Length);
+                    GameObject vechile = Instantiate(vechilePrefabs[vechileIndex], spawnPoints[spawnPointIndex].position, Quaternion.identity);
+                    vechile.transform.LookAt(endPoint.position);
+                    float speed = Random.Range(minSpeed, maxSpeed);
+                    vechile.GetComponent<Enemy>().Initialize(endPoint, speed);
+                }
             }
             else
             {
@@ -88,6 +108,14 @@ public class Road : MonoBehaviour
             }
 
         }
+    }
+
+    bool IsSpawnPointClear(Vector3 spawnPosition, float checkRadius)
+    {
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+        Collider[] colliders = Physics.OverlapSphere(spawnPosition, checkRadius, enemyLayer);
+
+        return colliders.Length == 0;
     }
 
     IEnumerator BlinkLight()

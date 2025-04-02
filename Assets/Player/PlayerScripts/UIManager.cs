@@ -47,8 +47,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        
-        yield return new WaitForSeconds(1f);
+    
 
         gameOverOverlay.gameObject.SetActive(true);
         gameOverScreen.SetActive(true);
@@ -57,7 +56,7 @@ public class UIManager : MonoBehaviour
         overlayColor.a = 0;
         gameOverOverlay.color = overlayColor;
 
-        float fadeInDuration = 1f;
+        float fadeInDuration = .5f;
         float elapsedTime = 0f;
 
         while(elapsedTime < fadeInDuration)

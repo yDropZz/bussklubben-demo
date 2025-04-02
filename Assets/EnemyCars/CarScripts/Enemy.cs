@@ -42,11 +42,6 @@ public class Enemy : MonoBehaviour
         player = FindAnyObjectByType<Player>();
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + raycastOffset, transform.forward * raycastDistance);
-    }
 
     void Update()
     {   
@@ -65,6 +60,10 @@ public class Enemy : MonoBehaviour
         }
 
         if(Vector3.Distance(transform.position, player.transform.position) > distanceToDespawn)
+        {
+            Destroy(gameObject);
+        }
+        else if(transform.position.z < player.transform.position.z - 50f)
         {
             Destroy(gameObject);
         }

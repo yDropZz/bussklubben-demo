@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4014613065710639314}
   - component: {fileID: 1879242386345332726}
   - component: {fileID: 2244853841225135115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car_Blue
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToDespawn: 400
-  raycastDistance: 10
-  raycastOffset: {x: 0, y: 2, z: 0}
+  raycastDistance: 12.5
+  raycastOffset: {x: 0, y: 1, z: 0}
   honkSounds:
   - {fileID: 8300000, guid: ed67bab4a6f97b94c955a1394c49b41c, type: 3}
   - {fileID: 8300000, guid: 6ae792dc59900c245a49123baee285ea, type: 3}
@@ -142,6 +142,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fec73f9a8b0c14f4eae82eb9122e6181, type: 3}
       propertyPath: m_Name
       value: bluecar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fec73f9a8b0c14f4eae82eb9122e6181, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: fec73f9a8b0c14f4eae82eb9122e6181, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

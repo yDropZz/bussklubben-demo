@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToDespawn: 200
-  raycastDistance: 20
-  raycastOffset: {x: 0, y: 2.5, z: 0}
+  raycastDistance: 25
+  raycastOffset: {x: 0, y: 1.5, z: 0}
   honkSounds:
   - {fileID: 8300000, guid: a7321003820d53d42b018c5baeb911b7, type: 3}
   isTrain: 1

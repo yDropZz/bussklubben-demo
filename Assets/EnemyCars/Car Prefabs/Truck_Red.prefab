@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4014613065710639314}
   - component: {fileID: 1879242386345332726}
   - component: {fileID: 2244853841225135115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Truck_Red
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToDespawn: 400
-  raycastDistance: 15
-  raycastOffset: {x: 0, y: 2, z: 0}
+  raycastDistance: 17.5
+  raycastOffset: {x: 0, y: 1, z: 0}
   honkSounds:
   - {fileID: 8300000, guid: a4d42e10ce5691a4ea6ea7c5bd513d40, type: 3}
   - {fileID: 8300000, guid: d1d52f1df84c44045bfb8e2a0009d64f, type: 3}
@@ -141,6 +141,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3c4d18a6a793ea844b8bc6190bd47b9b, type: 3}
       propertyPath: m_Name
       value: realtruck
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c4d18a6a793ea844b8bc6190bd47b9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3c4d18a6a793ea844b8bc6190bd47b9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

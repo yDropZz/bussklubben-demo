@@ -21,7 +21,11 @@ public class Player : MonoBehaviour
     float startTime;
     public Transform playerPos;
     GameManager gameManager;
+
+    [Header("Particles")]
     [SerializeField] GameObject crashParticles;
+    [SerializeField] GameObject dashParticles;
+    [SerializeField] Transform dashParticleSpawnPoint;
 
     [Header("Movement")]
     Vector2 touchStartPosition;
@@ -57,6 +61,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y < -10f)
+        {
+            isDead = true;
+            isCompletelyDead = true;
+            StartCoroutine(uiManager.GameOver());
+        }
+
         Dashing();
 
         if(isDead)
@@ -220,7 +231,6 @@ public class Player : MonoBehaviour
             if(dashDirection != Vector2.zero)
             {
                 PerformDash(dashDirection);
-                canDash = false;
             }
         }
 
@@ -267,6 +277,13 @@ public class Player : MonoBehaviour
         rb.AddTorque(torqueDirection * rotationSpeed, ForceMode.Impulse);
 
         SoundManager.Instance.PlaySoundEffect(dashSounds[Random.Range(0, dashSounds.Length)]);
+
+        // Play dash particles
+        GameObject dashParticlesInstance = Instantiate(dashParticles, transform.position, Quaternion.identity);
+        dashParticlesInstance.transform.forward = -dashDirection;
+
+
+
 
     }
 
@@ -391,7 +408,7 @@ public class Player : MonoBehaviour
     IEnumerator CheckIfStationary()
     {
         float stationaryTime = 0f;
-        float requiredStationaryTime = 1f;
+        float requiredStationaryTime = .15f;
 
         while(stationaryTime < requiredStationaryTime)
         {

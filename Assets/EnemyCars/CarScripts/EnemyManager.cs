@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
     {
         while(true)
         {
-            float distanceToPlayer = Vector3.Distance(player.position, road.spawnPoint.position);
+            float distanceToPlayer = Vector3.Distance(player.position, road.spawnPoints[0].position);
             if(distanceToPlayer < spawnRadius)
             {
                 float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -39,7 +39,9 @@ public class EnemyManager : MonoBehaviour
                 yield return new WaitForSeconds(road.spawnTimer);
 
                 int vechileIndex = Random.Range(0, vechilePrefabs.Length);
-                GameObject vechile = Instantiate(vechilePrefabs[vechileIndex], road.spawnPoint.position, Quaternion.identity);
+
+                int spawnPointIndex = Random.Range(0, road.spawnPoints.Length);
+                GameObject vechile = Instantiate(vechilePrefabs[vechileIndex], road.spawnPoints[spawnPointIndex].position, Quaternion.identity);
                 vechile.transform.LookAt(road.endPoint.position);
                 float speed = Random.Range(minSpeed, maxSpeed);
                 vechile.GetComponent<Enemy>().Initialize(road.endPoint, speed);
