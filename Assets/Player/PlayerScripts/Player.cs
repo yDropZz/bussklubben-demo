@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotationSpeed = 50f;
 
 
+    bool isVeryCompletelyDead = false;
     bool isCompletelyDead = false;
     bool isDead = false;
     public bool Dead { get {return isDead;} }
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     UIManager uiManager;
     private int crashes = 0;
     private int crashIndex = 0;
+    bool comboMode = false;
 
     void Awake()
     {
@@ -61,11 +63,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameManager.CalculateScore();
+
+
         if(transform.position.y < -10f)
         {
             isDead = true;
+
+            if(!isCompletelyDead)
+            {
+                StartCoroutine(uiManager.GameOver());
+            }
+
             isCompletelyDead = true;
-            StartCoroutine(uiManager.GameOver());
+
+
         }
 
         Dashing();
@@ -329,6 +341,7 @@ public class Player : MonoBehaviour
                 // Make enemy fly as well
                 float cachedEnemySpeed = enemy.Speed;
                 enemy.Speed = 0;
+
                 enemy.AddComponent<Rigidbody>();
                 Rigidbody enemyRB = enemy.GetComponent<Rigidbody>();
                 Vector3 enemyDirection = enemy.transform.position - transform.position;
@@ -391,7 +404,14 @@ public class Player : MonoBehaviour
 
             rb.AddForce(playerDirection.normalized * 50f, ForceMode.Impulse);
 
-            StartCoroutine(uiManager.GameOver());
+            isDead = true;
+
+            if(!isCompletelyDead)
+            {
+                StartCoroutine(uiManager.GameOver());
+            }
+            
+            isCompletelyDead = true;
         }
         else if(other.CompareTag("Ground"))
         {

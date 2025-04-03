@@ -50,12 +50,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218d6b141c8977428cfd6e9ca29a47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carTag: Train
   distanceToDespawn: 200
   raycastDistance: 25
   raycastOffset: {x: 0, y: 1.5, z: 0}
   honkSounds:
   - {fileID: 8300000, guid: a7321003820d53d42b018c5baeb911b7, type: 3}
   isTrain: 1
+  isBird: 0
 --- !u!65 &2324763325661314583
 BoxCollider:
   m_ObjectHideFlags: 0

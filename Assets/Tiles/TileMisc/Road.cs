@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-[SerializeField] private GameObject[] vechilePrefabs;
+[SerializeField] private string[] vechileTags;
     [SerializeField] private float minSpawnTime = 1f;
     [SerializeField] private float maxSpawnTime = 5f;
     [SerializeField] private float minSpeed = 5f;
@@ -29,8 +29,34 @@ public class Road : MonoBehaviour
     [SerializeField] private Light warningLight;
     [SerializeField] AudioClip trainSound;
 
+    [Header("Bird stuff")]
+    [SerializeField] string[] birdTags;
+    [SerializeField] GameObject[] birdPrefabs;
+    [SerializeField] Transform[] birdSpawnPoints;
+    [SerializeField] float birdSpawnRadius = 50f;
+    [SerializeField] float birdSpawnTimeMin = 5f;
+    [SerializeField] float birdSpawnTimeMax = 10f;
+    [SerializeField] float birdSpeedMin = 20f;
+    [SerializeField] float birdSpeedMax = 70f;
+    [SerializeField] float birdCheckRadius = 15f;
+
+    [SerializeField] Transform birdEndPoint;
+
+
     private bool firstSpawn = true;
-    
+    private bool firstBirdSpawn = true;
+    float birdSpawnTime = 1f;
+    ObjectPool objectPool;
+
+    void Awake()
+    {
+        objectPool = FindAnyObjectByType<ObjectPool>();
+        if(objectPool == null)
+        {
+            Debug.LogError("No object pool found in the scene. Please add one.");
+        }
+    }
+
 
 
 
@@ -45,6 +71,7 @@ public class Road : MonoBehaviour
         }
 
         StartCoroutine(SpawnVechiles());
+        StartCoroutine(SpawnBirds());
         
 
     }
@@ -52,6 +79,53 @@ public class Road : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private IEnumerator SpawnBirds()
+    {
+        while(true)
+        {
+            float distanceToPlayer = Vector3.Distance(player.position, spawnPoints[0].position);
+            if(distanceToPlayer < spawnRadius && transform.position.z > player.transform.position.z - 30f)
+            {
+                float birdSpawnTime = Random.Range(birdSpawnTimeMin, birdSpawnTimeMax);
+                if(firstBirdSpawn)
+                {
+                    firstBirdSpawn = false;
+                }
+
+                yield return new WaitForSeconds(birdSpawnTime);
+
+                // Making sure there actually are spawnPoints assigned
+                // If not, we just return and don't spawn anything.
+                if(birdSpawnPoints.Length == 0)
+                {
+                    Debug.LogWarning("No spawn points assigned. This message can just be ignored tbh");
+                    yield break;
+                }
+
+                // Roll a dice to see where we spawn the car.
+                int birdSpawnPointIndex = Random.Range(0, birdSpawnPoints.Length);
+                Transform selectedSpawnPoint = birdSpawnPoints[birdSpawnPointIndex];
+
+                // Check if the spawn point is clear of other cars
+                if(IsSpawnPointClear(selectedSpawnPoint.position, birdCheckRadius))
+                {
+                    int birdIndex = Random.Range(0, birdPrefabs.Length);
+                    GameObject bird = objectPool.GetObject(birdTags[birdIndex], selectedSpawnPoint.position, Quaternion.identity);
+                    bird.transform.LookAt(birdEndPoint.position);
+                    float speed = Random.Range(birdSpeedMin, birdSpeedMax);
+                    float scaledSpeed = ScaleVechileSpeed(speed);
+                    bird.GetComponent<Enemy>().Initialize(birdEndPoint, scaledSpeed, selectedSpawnPoint.position);
+
+                    
+                }
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
 
     private IEnumerator SpawnVechiles()
@@ -71,6 +145,7 @@ public class Road : MonoBehaviour
 
                 yield return new WaitForSeconds(spawnTime);
 
+
                 if(isRail)
                 {
                     trainComing = true;
@@ -88,6 +163,14 @@ public class Road : MonoBehaviour
                     SoundManager.Instance.PlaySoundEffect(trainSound, volume);
                 }
 
+                // Making sure there actually are spawnPoints assigned
+                // If not, we just return and don't spawn anything.
+                if(spawnPoints.Length == 0)
+                {
+                    Debug.LogWarning("No spawn points assigned. This message can just be ignored tbh");
+                    yield break;
+                }
+
                 // Roll a dice to see where we spawn the car.
                 int spawnPointIndex = Random.Range(0, spawnPoints.Length);
                 Transform selectedSpawnPoint = spawnPoints[spawnPointIndex];
@@ -95,11 +178,14 @@ public class Road : MonoBehaviour
                 // Check if the spawn point is clear of other cars
                 if(IsSpawnPointClear(selectedSpawnPoint.position, checkRadius))
                 {
-                    int vechileIndex = Random.Range(0, vechilePrefabs.Length);
-                    GameObject vechile = Instantiate(vechilePrefabs[vechileIndex], spawnPoints[spawnPointIndex].position, Quaternion.identity);
+                    int vechileIndex = Random.Range(0, vechileTags.Length);
+                    GameObject vechile = objectPool.GetObject(vechileTags[vechileIndex], spawnPoints[spawnPointIndex].position, Quaternion.identity);
                     vechile.transform.LookAt(endPoint.position);
                     float speed = Random.Range(minSpeed, maxSpeed);
-                    vechile.GetComponent<Enemy>().Initialize(endPoint, speed);
+                    float scaledSpeed = ScaleVechileSpeed(speed);
+                    vechile.GetComponent<Enemy>().Initialize(endPoint, scaledSpeed, selectedSpawnPoint.position);
+
+                    
                 }
             }
             else
@@ -110,11 +196,24 @@ public class Road : MonoBehaviour
         }
     }
 
+    float ScaleVechileSpeed(float speed)
+    {
+        // Temporary scaling simply based on player position.
+        carSpeedScaling = (player.position.z / 1000f) + 1f;
+        float scaledSpeed = speed * carSpeedScaling;
+        if(scaledSpeed > maxSpeed)
+        {
+            scaledSpeed = maxSpeed;
+        }
+        return scaledSpeed;
+    }
+
     bool IsSpawnPointClear(Vector3 spawnPosition, float checkRadius)
     {
         LayerMask enemyLayer = LayerMask.GetMask("Enemy");
         Collider[] colliders = Physics.OverlapSphere(spawnPosition, checkRadius, enemyLayer);
 
+        // Return true if no colliders are within the sphere.
         return colliders.Length == 0;
     }
 

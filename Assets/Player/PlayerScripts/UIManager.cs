@@ -16,19 +16,24 @@ public class UIManager : MonoBehaviour
     [Header("Game Over Screen")]
     [SerializeField] Image gameOverOverlay;
     [SerializeField] GameObject gameOverScreen;
-    [SerializeField] float fadeInDuration = 1f;
     [SerializeField] Button playAgainButton;
 
     [Header("Game Over Animation")]
     [SerializeField] RectTransform gameText;
     [SerializeField] RectTransform overText;
+    [SerializeField] TextMeshProUGUI finalScoreAmount;
+    [SerializeField] TextMeshProUGUI finalScoreText;
     [SerializeField] RectTransform playAgainButtonMovement;
     [SerializeField] Vector2 gameTextFinalPos;
     [SerializeField] Vector2 overTextFinalPos;
     [SerializeField] Vector2 playAgainButtonFinalPos;
     [SerializeField] float textMoveDuration = 1f;
     [SerializeField] float textMoveDelay = 0.5f;
-
+    int distanceScore = 0;
+    int scoreUsedToCalculate = 0;
+    bool scoreTaken = false;
+    int time = 0;
+    int finalScore = 0;
 
     void Awake()
     {
@@ -40,8 +45,11 @@ public class UIManager : MonoBehaviour
     {
 
         currentScore = gameManager.Score;
-        scoreText.text = "Score: " + currentScore;
-        timeText.text = "Time: " + Mathf.FloorToInt(Time.timeSinceLevelLoad);
+        distanceScore = gameManager.DistanceScore;
+        scoreText.text = "Distance: " + currentScore + "m";
+        time = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+        timeText.text = "Time: " + time + "s";
+
         
     }
 
@@ -91,6 +99,12 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(textMoveDuration);
 
+        //Animate final score text
+        finalScoreAmount.text = finalScore.ToString();
+        finalScoreText.gameObject.SetActive(true);
+        finalScoreText.transform.localScale = Vector3.zero;
+        LeanTween.scale(finalScoreText.gameObject, Vector3.one, textMoveDuration).setEaseOutBack().setDelay(textMoveDelay);
+
         playAgainButtonMovement.transform.localScale = Vector3.zero;
         LeanTween.scale(playAgainButtonMovement, Vector3.one, textMoveDuration).setEaseOutBack();
 
@@ -103,7 +117,15 @@ public class UIManager : MonoBehaviour
     {
         comboCount++;
 
-        int finalScore = currentScore * comboCount;
+        if(scoreTaken == false)
+        {
+            scoreUsedToCalculate = gameManager.Score;
+            scoreTaken = true;
+        }
+
+        finalScore = scoreUsedToCalculate * comboCount;
+
+        
 
         comboScoreAmount.text = finalScore.ToString();
 
@@ -116,7 +138,7 @@ public class UIManager : MonoBehaviour
         {
             LeanTween.scale(comboScoreAmount.gameObject, Vector3.one, .2f).setEaseInBack().setDelay(.5f).setOnComplete(() =>
             {
-                comboScoreAmount.gameObject.SetActive(true);
+                comboScoreAmount.gameObject.SetActive(false);
             });
         });
     }
@@ -124,9 +146,9 @@ public class UIManager : MonoBehaviour
     IEnumerator FlashComboColors()
     {
 
-        float duration = .2f;
+        float duration = .7f;
         float elapsedTime = 0f;
-        float colorChangeInterval = .03f;
+        float colorChangeInterval = .25f;
 
         while(elapsedTime < duration)
         {
@@ -139,6 +161,6 @@ public class UIManager : MonoBehaviour
             elapsedTime += colorChangeInterval;
         }
 
-        comboScoreAmount.color = Color.white;
+        comboScoreAmount.color = Color.red;
     }
 }

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218d6b141c8977428cfd6e9ca29a47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carTag: Car_Green
   distanceToDespawn: 400
   raycastDistance: 12.5
   raycastOffset: {x: 0, y: 1, z: 0}

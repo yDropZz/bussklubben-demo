@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] Transform playerPos;
     public int Score { get { return score;}}
+    int distanceScore = 0;
+    public int DistanceScore {get {return distanceScore;}}
 
 
     MapGeneration mapGeneration;
@@ -16,7 +18,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Time.timeScale = 1f;
-        Application.targetFrameRate = 60;
         mapGeneration = FindAnyObjectByType<MapGeneration>();
         playerPos = FindAnyObjectByType<Player>().transform;
         
@@ -32,10 +33,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerPos.position.z > 0)
-        {
-            CalculateScore();
-        }
 
         if(Input.GetKeyDown(KeyCode.R))
         {

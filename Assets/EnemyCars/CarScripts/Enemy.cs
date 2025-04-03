@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    [Header("Individual Car Settings")]
+    [SerializeField] private string carTag;
     [SerializeField] private int distanceToDespawn = 200;
     [SerializeField] private float raycastDistance = 20f;
     [SerializeField] private Vector3 raycastOffset = new Vector3(0, 2.5f, 0);
@@ -16,6 +18,11 @@ public class Enemy : MonoBehaviour
     [Header("Train")]
     [SerializeField] private bool isTrain = false;
     public bool IsTrain { get {return isTrain;}}
+
+    [Header("Bird")]
+    [SerializeField] private bool isBird = false;
+    public bool IsBird { get {return isBird;}}
+
     Player player;
     private Transform targetPoint;
     private float speed;
@@ -27,19 +34,56 @@ public class Enemy : MonoBehaviour
     }
 
     Collider coll;
+    ObjectPool objectPool;
 
     //Bool to check if the car is driving freely or with limited speed (determined by car in front)
     private bool limitedSpeed = false;
 
-    public void Initialize(Transform target, float moveSpeed)
+    public void Initialize(Transform target, float moveSpeed, Vector3 spawnPosition)
     {
         targetPoint = target;
         speed = moveSpeed;
+
+        transform.position = spawnPosition;
+
+        limitedSpeed = false;
     }
 
     void Awake()
     {
         player = FindAnyObjectByType<Player>();
+        objectPool = FindAnyObjectByType<ObjectPool>();
+    }
+
+    void OnDisable()
+    {
+        // Full vechile reset
+        speed = 0;
+
+        limitedSpeed = false;
+
+        targetPoint = null;
+
+        if(coll == null)
+        {
+            coll = GetComponent<Collider>();
+            coll.enabled = true;
+            coll.isTrigger = true;
+        }
+        else
+        {
+            coll.enabled = true;
+            coll.isTrigger = true;
+        }
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if(rb != null)
+        {
+            Destroy(rb);
+        }
+
+        transform.rotation = Quaternion.identity;
+        
     }
 
 
@@ -55,17 +99,17 @@ public class Enemy : MonoBehaviour
 
             if(Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
             {
-                Destroy(gameObject);
+                objectPool.ReturnObject(carTag, gameObject);
             }
         }
 
         if(Vector3.Distance(transform.position, player.transform.position) > distanceToDespawn)
         {
-            Destroy(gameObject);
+            objectPool.ReturnObject(carTag, gameObject);
         }
         else if(transform.position.z < player.transform.position.z - 50f)
         {
-            Destroy(gameObject);
+            objectPool.ReturnObject(carTag, gameObject);
         }
     }
 

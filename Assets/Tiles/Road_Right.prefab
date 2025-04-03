@@ -545,6 +545,40 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &737073585488894622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6393144081331674380}
+  m_Layer: 0
+  m_Name: BirdPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6393144081331674380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737073585488894622}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.125, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7739744451367824078}
+  - {fileID: 4688017505274982368}
+  - {fileID: 1544981950372006084}
+  m_Father: {fileID: 6361977505387747585}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818691462398782724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,6 +1626,7 @@ Transform:
   m_LocalScale: {x: 8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6393144081331674380}
   - {fileID: 6089177426666192275}
   - {fileID: 5159172311557351180}
   - {fileID: 8632594872657982017}
@@ -1689,13 +1724,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf38fe9b1129114ca24f1c4487667cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vechilePrefabs:
-  - {fileID: 5690919290033613025, guid: f7d79f6d41d867d49beea9b08fb5266c, type: 3}
-  - {fileID: 3189027875206276657, guid: dfb80416f7d646045b3e04e7e0b52ec9, type: 3}
-  - {fileID: 7210691854678894526, guid: 5288f9a51c8344a448107cd6d49bd190, type: 3}
-  - {fileID: 3346759842252854050, guid: 4972f593f2be27e438449c49f0a5fb7d, type: 3}
-  - {fileID: 5690919290033613025, guid: 750c72968c28224419b9d2c4449ec210, type: 3}
-  - {fileID: 5690919290033613025, guid: dd181df3ef5ed404c8a97373070e8b9d, type: 3}
+  vechileTags:
+  - Car_Blue
+  - Car_Green
+  - Car_Red
+  - Car_Yellow
+  - Truck_Green
+  - Truck_Red
   minSpawnTime: 1
   maxSpawnTime: 3
   minSpeed: 18
@@ -1714,6 +1749,24 @@ MonoBehaviour:
   trainWarningTime: 3
   warningLight: {fileID: 0}
   trainSound: {fileID: 0}
+  birdTags:
+  - Bird1
+  - Bird2
+  - Bird3
+  birdPrefabs:
+  - {fileID: 1082048276361652014, guid: 06c8d2780de88b04dbe7ab83dbce0b3f, type: 3}
+  - {fileID: 1082048276361652014, guid: 9180713b9ba89c64b8dafe589d606d3a, type: 3}
+  - {fileID: 1082048276361652014, guid: 773b7822a13a85e40b08f8ca2756875f, type: 3}
+  birdSpawnPoints:
+  - {fileID: 7739744451367824078}
+  - {fileID: 4688017505274982368}
+  birdSpawnRadius: 1
+  birdSpawnTimeMin: 1
+  birdSpawnTimeMax: 10
+  birdSpeedMin: 50
+  birdSpeedMax: 100
+  birdCheckRadius: 15
+  birdEndPoint: {fileID: 1544981950372006084}
 --- !u!1 &3198610052538472698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,6 +1985,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3686823602823749913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7739744451367824078}
+  m_Layer: 0
+  m_Name: SpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &7739744451367824078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686823602823749913}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 191.12, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6393144081331674380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3929642183375787615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4688017505274982368}
+  m_Layer: 0
+  m_Name: SpawnPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &4688017505274982368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929642183375787615}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 85.84, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6393144081331674380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4048662483315151263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2351,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &5145028999960790464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544981950372006084}
+  m_Layer: 0
+  m_Name: EndPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1544981950372006084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145028999960790464}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -186, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6393144081331674380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5697603023208672173
 GameObject:
   m_ObjectHideFlags: 0

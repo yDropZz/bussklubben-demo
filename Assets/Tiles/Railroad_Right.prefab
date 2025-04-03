@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf38fe9b1129114ca24f1c4487667cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vechilePrefabs:
-  - {fileID: 629278891641953548, guid: b94253540b74ff540817db99d0026c64, type: 3}
+  vechileTags:
+  - Train
   minSpawnTime: 1.5
   maxSpawnTime: 6
   minSpeed: 100
@@ -220,7 +220,8 @@ MonoBehaviour:
   spawnRadius: 400
   carSpeedScaling: 0.005
   checkRadius: 5
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 8632594872657982017}
   endPoint: {fileID: 5657175637531955482}
   spawnTimer: 0
   spawnTime: 5
@@ -229,6 +230,16 @@ MonoBehaviour:
   trainWarningTime: 1.5
   warningLight: {fileID: 4949060623628874355}
   trainSound: {fileID: 8300000, guid: 99122711de4b35a4a982b99f75585395, type: 3}
+  birdTags: []
+  birdPrefabs: []
+  birdSpawnPoints: []
+  birdSpawnRadius: 50
+  birdSpawnTimeMin: 5
+  birdSpawnTimeMax: 10
+  birdSpeedMin: 20
+  birdSpeedMax: 70
+  birdCheckRadius: 15
+  birdEndPoint: {fileID: 0}
 --- !u!1 &4528168621219985130
 GameObject:
   m_ObjectHideFlags: 0
