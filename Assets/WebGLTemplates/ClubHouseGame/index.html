@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        background-color: #000000;
+      }
+      #game {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #ui {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .spinner {
+        width: 100px;
+        margin-top: 20px;
+        animation: loading 1s linear infinite;
+      }
+
+      .loader-logo {
+        width: 50%;
+        max-width: 500px;
+      }
+
+      .loader-text {
+        font-family: DosisRegular;
+        color: #ffffff;
+      }
+
+      .unity-mobile {
+        width: 100%;
+        height: 100%;
+      }
+
+      .unity-desktop {
+        display: flex;
+        justify-content: center;
+      }
+
+      #unity-canvas {
+        width: 0;
+        height: 0;
+      }
+
+      @keyframes loading {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <div id="ui"></div>
+    <div class="loader" id="loader">
+      <p class="loader-text">Startar</p>
+      <img class="loader-logo" src="images/logo.png" />
+      <img class="spinner" src="images/spinner.svg" />
+    </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <script src="/sdk/ClubHouseGame.js"></script>
+
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var config = {
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "0.1",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+
+      document.body.requestFullscreen = null;
+      document.body.webkitRequestFullscreen = null;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+      } else {
+        canvas.style.width = window.innerHeight * 0.5625 + "px";
+        canvas.style.height = window.innerHeight + "px";
+      }
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {})
+          .then((unityInstance) => {
+            window.unityInstance = unityInstance;
+          })
+          .catch((message) => {
+            alert(message);
+          });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
