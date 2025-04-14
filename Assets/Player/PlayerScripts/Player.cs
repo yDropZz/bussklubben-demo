@@ -243,6 +243,7 @@ public class Player : MonoBehaviour
             if(dashDirection != Vector2.zero)
             {
                 PerformDash(dashDirection);
+                canDash = false;
             }
         }
 
